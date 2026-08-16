@@ -1,0 +1,9 @@
+# Build output
+*.o
+speedtest
+
+# Editor
+.vscode/
+
+# macOS
+.DS_Store
