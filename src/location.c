@@ -5,6 +5,7 @@
 #include "cJSON.h"
 #include <curl/curl.h>
 
+// To store response data
 typedef struct
 {
     char *data;

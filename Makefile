@@ -1,8 +1,7 @@
 CC = gcc
-
 TARGET = speedtest
 
-SRC = src/main.c src/server.c src/speedtest.c src/location.c src/best.c lib/cJSON.c
+SRC = src/main.c src/cli.c src/commands.c src/server.c src/speedtest.c src/location.c src/best.c lib/cJSON.c
 OBJ = $(SRC:.c=.o)
 
 UNAME_S := $(shell uname -s)
@@ -23,7 +22,9 @@ $(TARGET): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-src/main.o: inc/server.h inc/speedtest.h inc/location.h inc/best.h
+src/main.o: inc/cli.h inc/commands.h
+src/cli.o: inc/cli.h
+src/commands.o: inc/commands.h inc/cli.h inc/server.h inc/speedtest.h inc/location.h inc/best.h
 src/server.o: inc/server.h lib/cJSON.h
 src/speedtest.o: inc/speedtest.h inc/server.h
 src/location.o: inc/location.h lib/cJSON.h

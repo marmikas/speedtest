@@ -11,6 +11,7 @@ The program can determine the user's location, select a suitable Speedtest serve
 * Automatic location detection
 * Best server selection based on latency
 * Manual server selection by ID
+* Server list with IDs
 * Full automatic speed test
 * Command-line interface
 
@@ -18,7 +19,7 @@ The program can determine the user's location, select a suitable Speedtest serve
 
 ```text
 ├── src/        # Source files
-├── include/    # Project headers
+├── inc/        # Project headers
 ├── lib/        # cJSON
 ├── data/       # Speedtest server list
 └── Makefile
@@ -80,6 +81,8 @@ Options:
 -d          Download test
 -u          Upload test
 -l          Show location
+-L          List available servers and IDs
+--list-servers  List available servers and IDs
 -b          Find best server
 -s ID       Select server by ID
 -a          Run full speed test
@@ -92,7 +95,19 @@ For example:
 ./speedtest -a
 ```
 
-Or test download speed using a specific server:
+Or list available servers and their IDs:
+
+```bash
+./speedtest -L
+```
+
+The long form is also supported:
+
+```bash
+./speedtest --list-servers
+```
+
+Then test download speed using a specific server ID:
 
 ```bash
 ./speedtest -d -s 16249
